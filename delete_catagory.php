@@ -16,7 +16,7 @@ $sql = "DELETE FROM catagory WHERE id=".$_GET['id'];
 
 if ($conn->query($sql) === TRUE) {
   echo "Record deleted successfully";
-  header("Location: list_catagory.html"); /* Redirect browser */
+  header("Location: list_catagory.php"); /* Redirect browser */
   
 } else {
   echo "Error deleting record: " . $conn->error;

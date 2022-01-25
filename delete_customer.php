@@ -16,7 +16,7 @@ $sql = "DELETE FROM customer WHERE id=".$_GET['id'];
 
 if ($conn->query($sql) === TRUE) {
   echo "Record deleted successfully";
-  header("Location: list_customer.html"); /* Redirect browser */
+  header("Location: list_customer.php"); /* Redirect browser */
   
 } else {
   echo "Error deleting record: " . $conn->error;

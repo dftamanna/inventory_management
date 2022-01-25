@@ -16,7 +16,7 @@ $sql = "DELETE FROM item WHERE id=".$_GET['id'];
 
 if ($conn->query($sql) === TRUE) {
   echo "Record deleted successfully";
-  header("Location: list_item.html"); /* Redirect browser */
+  header("Location: list_item.php"); /* Redirect browser */
   
 } else {
   echo "Error deleting record: " . $conn->error;
