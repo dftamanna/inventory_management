@@ -15,7 +15,13 @@
 
     <title>list_customer</title>
 </head>
+<script>
+    const deleteRow = (id) => {
+        let result = confirm('Are you sure you want to delete item #'+id)
+        if(result) location.href='delete_item.php?id='+id
 
+    }
+</script>
 <body>
     <style>
         #customers {
@@ -73,7 +79,7 @@
 
     <div class="m-3">
 
-        <h1>Customer</h1>
+        <h1>Item</h1>
         <nav class="navbar navbar-light " style="background-color: #dae2e7;">
             <div class="container-fluid">
 
@@ -85,11 +91,11 @@
 
                 <form class="d-flex">
 
-                    <button class="btn btn-outline-success" type="submit"><svg xmlns="http://www.w3.org/2000/svg"
+                    <button onclick="location.href='Item.html'" class="btn btn-outline-success" type="button"><svg xmlns="http://www.w3.org/2000/svg"
                             width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
                             <path
                                 d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                        </svg> Add Customer</button>
+                        </svg> Add Item</button>
                 </form>
             </div>
         </nav>
@@ -124,9 +130,12 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Mobile</th>
-                                    <th scope="col">Address</th>
+                                    <th scope="col">Catagory</th>
+                                    <th scope="col">Stock</th>
+                                    <th scope="col">Purchase_Price</th>
+                                    <th scope="col">Sell_Price</th>
                                     <th scope="col">Status</th>
+                                    
                                     <th colspan="2" scope="col">Action</th>
                                 </tr>
                                 <?php
@@ -145,7 +154,7 @@
                                
                                 
                                 
-                                $sql = "SELECT * FROM supplier";
+                                $sql = "SELECT * FROM item";
                                 $result = mysqli_query($conn, $sql);
 
                                 if (mysqli_num_rows($result) > 0) {
@@ -166,14 +175,30 @@
                                         <?php  echo  $row["name"] ?>
                                     </td>
                                     <td>
-                                        <?php  echo  $row["mobile"] ?>
+                                        <?php  echo  $row["catagory"] ?>
                                     </td>
                                     <td>
-                                        <?php  echo  $row["address"] ?>
+                                        <?php  echo  $row["stock"] ?>
                                     </td>
-                                    <td><button type="button" class="btn " data-bs-toggle="tooltip" title="Active"><i style="color: rgb(47, 145, 38);" class="fa fa-toggle-on fa-2x " aria-hidden="true"></i></button> </td>
-                                    <td><button type="button" class="btn btn-primary" data-bs-toggle="tooltip" title="Update"><i class="fa fa-edit" aria-hidden="true"></i></button> </td>
-                                    <td><button type="button" class="btn btn-danger" data-bs-toggle="tooltip" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
+                                    <td>
+                                        <?php  echo  $row["purchase_price"] ?>
+                                    </td>
+                                    <td>
+                                        <?php  echo  $row["sell_price"] ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                        if($row['status']=="Active") { ?>
+                                            <i style="color: rgb(47, 145, 38);" class="fa fa-toggle-on fa-2x " aria-hidden="true"></i>
+                                        <?php } else {?>
+                                            <i class="fa fa-toggle-off fa-2x " aria-hidden="true"></i>
+                                        <?php }?>
+
+
+
+                                    </td>
+                                    <td><button  onclick=" location.href='update_item.html?id=<?= $row["id"] ?> '" type="button" class="btn btn-primary" data-bs-toggle="tooltip" title="Update"><i class="fa fa-edit" aria-hidden="true"></i></button> </td>
+                                    <td><a onclick="deleteRow(<?= $row['id'] ?>)" type="button" class="btn btn-danger" data-bs-toggle="tooltip" title="Delete"><i class="fa fa-trash" aria-hidden="true"></i></button> </td>
 
                                 </tr>
                                 <?php

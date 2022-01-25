@@ -13,14 +13,17 @@ if ($conn->connect_error) {
 } 
 echo "Connected successfully";
 
-$sql = "INSERT INTO users(name, email, password) VALUES ('$_POST[name]' ,'$_POST[emailAddress]' ,'$_POST[password]'  )";
-
+$sql = "UPDATE item  SET  name='".$_POST['name']."', catagory='".$_POST['catagory']."', stock='".$_POST['stock']."', purchase_price='".$_POST['purchasePrice']."', sell_price='".$_POST['sellPrice']."', status='".$_POST['status']."'  WHERE id=".$_POST['id'];
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
-  header("Location: login.html"); /* Redirect browser */
+  header("Location: list_item.php"); /* Redirect browser */
   exit();
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
-?>
+
+?> 
+     
+    </form>
+  </div> 

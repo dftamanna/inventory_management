@@ -18,9 +18,9 @@ $sql = "INSERT INTO users(name, email, password) VALUES ('$_POST[name]' ,'$_POST
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
-  header("Location: login.html"); /* Redirect browser */
+  header("Location: dashboard.php"); /* Redirect browser */
   exit();
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
-?>
+?> 

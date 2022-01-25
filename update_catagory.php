@@ -1,4 +1,4 @@
-<?php
+ <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -13,14 +13,17 @@ if ($conn->connect_error) {
 } 
 echo "Connected successfully";
 
-$sql = "INSERT INTO users(name, email, password) VALUES ('$_POST[name]' ,'$_POST[emailAddress]' ,'$_POST[password]'  )";
-
+$sql = "UPDATE catagory  SET  code='".$_POST['code']."', name='".$_POST['name']."', description='".$_POST['description']."', status='".$_POST['status']."'  WHERE id=".$_POST['id'];
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";
-  header("Location: login.html"); /* Redirect browser */
+  header("Location: list_catagory.php"); /* Redirect browser */
   exit();
 } else {
   echo "Error: " . $sql . "<br>" . $conn->error;
 }
-?>
+
+?> 
+     
+    </form>
+  </div>
