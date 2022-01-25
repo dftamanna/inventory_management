@@ -16,7 +16,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="main">
 <div class="login1">
 
-<h1>Inventory </h1>
+
 
 
 </div>
